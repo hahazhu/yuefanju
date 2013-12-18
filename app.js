@@ -31,7 +31,7 @@ if ('development' == app.get('env')) {
 app.get('/', routes.index);
 app.get('/users', user.list);
 
-
+/*
 //mysql begin
 var mysql      = require('mysql');
 var connection = mysql.createConnection({
@@ -53,7 +53,7 @@ connection.end();
 //mysql end
 
 
-
+*/
 
 
 http.createServer(app).listen(app.get('port'), function(){
