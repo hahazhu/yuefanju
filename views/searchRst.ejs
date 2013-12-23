@@ -38,6 +38,9 @@
 			</form>
 		</div>
 	</div>
+	<div>
+		搜索到关于“<%=searchWord%>”的结果如下：共有数据<%=rstLength%>条
+	</div>
 	<div class="row-fluid">
 		<div class="span12">
 			<ul class="nav nav-tabs">
@@ -55,7 +58,7 @@
 				</li>
 			</ul>
 			<h2>
-				约炮活动A计划
+				约炮活动A计划（<%=rowRst[0].host%>+<%=rowRst[0].db%>+<%=rowRst[0].user%>）
 			</h2>
 			<p>
 				创建人： 高强    创建时间 ：2013年8月9日  简介：约炮活动A计划
@@ -64,7 +67,7 @@
 				<a class="btn" href="#">点击进入 »</a>
 			</p>
 			<h2>
-				约炮活动B计划
+				约炮活动B计划（<%=rowRst[1].host%>+<%=rowRst[1].db%>+<%=rowRst[1].user%>）
 			</h2>
 			<p>
 				创建人： 朱旻    创建时间 ：2013年8月9日  简介：约炮活动B计划
@@ -73,7 +76,7 @@
 				<a class="btn" href="#">点击进入 »</a>
 			</p>
 			<h2>
-				约炮活动C计划
+				约炮活动C计划（<%=rowRst[2].host%>+<%=rowRst[2].db%>+<%=rowRst[2].user%>）
 			</h2>
 			<p>
 				创建人：MM    创建时间 ：2013年8月9日  简介：约炮活动C计划
