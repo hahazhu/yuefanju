@@ -26,6 +26,9 @@
       }
 
   </style>
+  <script type="text/javascript" src="javascript/jquery-1.10.2.js">
+
+  </script>
 
 </head>
 <body>
@@ -36,14 +39,14 @@
 
               <h1 class="margin-base-vertical"><img src="/images/logo.png"  alt="简单轻松约饭局" /></h1>
 
-              <form class="margin-base-vertical">
+              <form id="mainForm " class="margin-base-vertical" method="get">
                   <p class="input-group">
                       <input type="text" class="input-xxlarge search-query" name="searchText" placeholder="搜索饭局名，创建人，简介等" />
                        <button type="submit" class="btn">搜索</button>
                   </p>
                   <p class="help-block text-center"><small>还在为天天统计朋友们的有空时间烦恼吗？创建一个饭局把，让朋友们统一时间</small></p>
                   <p class="text-center">
-                      <button type="submit" class="btn btn-warning">创建</button>
+                      <a class="btn btn-warning" href="/newEvent">创建</a>
                   </p>
                   </span>
               </form>
