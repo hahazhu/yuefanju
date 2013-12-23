@@ -12,4 +12,7 @@ module.exports = function(app) {
 			title: 'Express'
 		})
 	});
+	app.get('/newEvent',function(req,res){
+		res.render('newEvent')
+	})
 }
