@@ -1,4 +1,3 @@
-
 /**
  * Module dependencies.
  */
@@ -25,15 +24,22 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // development only
 if ('development' == app.get('env')) {
-  app.use(express.errorHandler());
+	app.use(express.errorHandler());
 }
 
-app.get('/', routes.index);
-app.get('/users', user.list);
-app.get('/searchRst', routes.searchRst);
-
-
-/*
+routes(app);
+var pool = require('./model/db').pool;
+pool.getConnection(
+	function(err, conn) {
+		conn.query('SELECT 1 + 1 AS solution', 
+			function(err, rows, fields) {
+				if (err) throw err;
+				console.log('The solution is: ', rows[0].solution);
+			}
+		);
+	}
+);
+		/*
 //mysql begin
 var mysql      = require('mysql');
 var connection = mysql.createConnection({
@@ -58,6 +64,6 @@ connection.end();
 */
 
 
-http.createServer(app).listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
-});
+		http.createServer(app).listen(app.get('port'), function() {
+			console.log('Express server listening on port ' + app.get('port'));
+		});
