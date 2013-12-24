@@ -32,8 +32,8 @@
 	<div class="row-fluid">
 		<div class="span12">
 				<img src="/images/logo1.png"  alt="简单轻松约饭局" />
-			<form class="form-search">
-				<input type="text" class="input-xxlarge search-query" /> 
+			<form class="form-search" method="post" action="/post">
+				<input type="text" class="input-xxlarge search-query" name="searchText" /> 
 				<button type="submit" class="btn">搜索</button>
 			</form>
 		</div>
@@ -57,62 +57,30 @@
 					<a href="#">简介</a>
 				</li>
 			</ul>
+			
+			<% for(i=0;i<rstLength;i++){ %>
 			<h2>
-				约炮活动A计划（<%=rowRst[0].host%>+<%=rowRst[0].db%>+<%=rowRst[0].user%>）
+				<%=rowRst[i].event_name%>
 			</h2>
 			<p>
-				创建人： 高强    创建时间 ：2013年8月9日  简介：约炮活动A计划
+				创建人： <%=rowRst[i].event_creator%>
+			</p>
+			<p>
+				创建时间： <%=rowRst[i].event_crtime%>
+			</p>
+			<p>
+				活动描述： <%=rowRst[i].event_comment%>
 			</p>
 			<p>
 				<a class="btn" href="#">点击进入 »</a>
 			</p>
-			<h2>
-				约炮活动B计划（<%=rowRst[1].host%>+<%=rowRst[1].db%>+<%=rowRst[1].user%>）
-			</h2>
-			<p>
-				创建人： 朱旻    创建时间 ：2013年8月9日  简介：约炮活动B计划
-			</p>
-			<p>
-				<a class="btn" href="#">点击进入 »</a>
-			</p>
-			<h2>
-				约炮活动C计划（<%=rowRst[2].host%>+<%=rowRst[2].db%>+<%=rowRst[2].user%>）
-			</h2>
-			<p>
-				创建人：MM    创建时间 ：2013年8月9日  简介：约炮活动C计划
-			</p>
-			<p>
-				<a class="btn" href="#">点击进入 »</a>
-			</p>
-			<div class="pagination">
-				<ul>
-					<li>
-						<a href="#">Prev</a>
-					</li>
-					<li>
-						<a href="#">1</a>
-					</li>
-					<li>
-						<a href="#">2</a>
-					</li>
-					<li>
-						<a href="#">3</a>
-					</li>
-					<li>
-						<a href="#">4</a>
-					</li>
-					<li>
-						<a href="#">5</a>
-					</li>
-					<li>
-						<a href="#">Next</a>
-					</li>
-				</ul>
-			</div>
+			<%}%>
+			
 		</div>
 	</div>
 	<div class="row-fluid">
 		<div class="span12">
+		<a class="btn" href="#">显示更多</a>
 		</div>
 	</div>
 </div>
