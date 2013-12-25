@@ -2,7 +2,7 @@
  * GET home page.
  */
 module.exports = function(app) {
-	app.post('/post', function(req, res) {
+	app.post('/searchRst', function(req, res) {
 		res.redirect('/searchRst/' + req.body.searchText);
 	});
 	app.get('/', function(req, res) {
