@@ -7,7 +7,8 @@ module.exports = function(app) {
 	});
 	app.get('/', function(req, res) {
 		res.render('index', {
-			title : 'Express'
+			title : 'Express',
+			layout: 'template'
 		})
 	});
 	app.get('/searchRst/:searchText', function(req, res) {
@@ -22,7 +23,8 @@ module.exports = function(app) {
 				res.render('searchRst', {
 					searchWord : req.params.searchText,
 					rstLength : rows.length,
-					rowRst : rows
+					rowRst : rows,
+					layout: 'template'
 				})
 			});
 		});
