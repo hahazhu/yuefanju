@@ -1,10 +1,17 @@
+<script language="javascript" type ="text/javascript">
+		$(document).ready(function() {
+			$(window).load(function() {
+		            $("body").textSearch("<%=searchWord%>",{markColor: "red",divStr: " "});
+		        });
+		 });
+</script>
 <div>
 	<a href="/"> <img src="/images/logo1.png"  alt="简单轻松约饭局" /></a>
 </div>
 	<div class="view">
 		<div class="span12">
 			<form class="form-search" method="post" action="/searchRst">
-				<input type="text" class="input-xxlarge search-query" name="searchText" /> 
+				<input type="text" class="input-xxlarge search-query" name="searchText" value="<%=searchWord%>"/> 
 				<button type="submit" class="btn">搜索</button>
 			</form>
 		</div>
@@ -30,18 +37,23 @@
 搜索到关于“<%=searchWord%>”的结果如下：共有数据<%=rstLength%>条
 	</div>
 	
-		<% for(i=0;i<rstLength;i++){ %>
+		<% for(i=0;i<rstLength;i++){
+			var name = rowRst[i].event_name;
+			var creator=  rowRst[i].event_creator;
+			var ctime = rowRst[i].event_crtime;
+			var comment= rowRst[i].event_comment;
+		 %>
 		<h2>
-			<%=rowRst[i].event_name%>
+			活动名称：<%=name%>
 		</h2>
 		<p>
-			创建人： <%=rowRst[i].event_creator%>
+			创建人： <%=creator%>
 		</p>
 		<p>
-			创建时间： <%=rowRst[i].event_crtime%>
+			创建时间： <%=ctime%>
 		</p>
 		<p>
-			活动描述： <%=rowRst[i].event_comment%>
+			活动描述： <%=comment%>
 		</p>
 		<p>
 			<a class="btn" href="#">点击进入 »</a>
