@@ -2,7 +2,6 @@
  * GET home page.
  */
 //未输入搜索内容
-var search_none ='select t.event_name,t.event_creator,t.event_crtime,t.event_comment '+
 				'from dat_event_info t order by t.event_crtime desc';
 //输入搜索内容，但是未选择类别
 var search_all ='select t.event_name,t.event_creator,t.event_crtime,t.event_comment  '+
