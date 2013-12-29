@@ -8,8 +8,10 @@ var search_none ='select t.event_name,t.event_creator,t.event_crtime,t.event_com
 var search_all ='select t.event_name,t.event_creator,t.event_crtime,t.event_comment  '+
 				'from dat_event_info t where t.event_name REGEXP ? or t.event_creator REGEXP ? or t.event_comment REGEXP ?'+
 				'order by t.event_crtime desc';
+var insertEvent = ' insert into dat_event_info set ? ';
 module.exports = function(app) {
 	app.post('/searchRst', function(req, res) {
+		console.log('12313123');
 		console.log('The length is: ', req.body.searchText);
 		res.redirect('/searchRst/' + req.body.searchText);
 	});
@@ -60,5 +62,22 @@ module.exports = function(app) {
 	});
 	app.get('/newEvent', function(req, res) {
 		res.render('newEvent')
-	})
+	});
+	app.post('/newEvent', function(req, res) {
+		console.log('123123');
+		var pool = require('../model/db').pool;
+		var params = { event_name:req.body.eventName,event_crtime:req.body.dp1,event_comment:req.body.content};
+		pool.getConnection(function(err,conn){
+			conn.query(insertEvent,params,function(err,result){
+				if(err){
+					throw err;
+				}
+				res.render('index',{
+					title:'express',
+					layout: 'template'
+				});
+
+			});
+		})
+	});
 }

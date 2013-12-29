@@ -1,236 +1,106 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
-<html> 
-  <head> 
-    <title>约饭局1</title> 
-    <link rel='stylesheet' href='/stylesheets/bootstrap.css' /> 
-    <link rel='stylesheet' href='/stylesheets/datepicker.css' /> 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>约饭局1</title>
+	<link rel='stylesheet' href='/stylesheets/bootstrap.css' />
+	<link rel='stylesheet' href='/stylesheets/datepicker.css' />
 
-
-    <style type="text/css"> 
+	<style type="text/css"> 
       body { 
-	padding-top: 60px; 
-	padding-bottom: 40px; 
-      } 
-    </style> 
-    <link href="stylesheets/bootstrap-responsive.css" rel="stylesheet"> 
-  </head> 
-  <body> 
+		padding-top: 60px; 
+		padding-bottom: 40px; 
+      }
+    .datepicker td, .datepicker th {
+    	width: 80px;
+    	height: 40px;
+    	font-size: 20px;
+	} 
+    </style>
+</head>
+<body>
 
-    <div class="navbar navbar-fixed-top"> 
-      <div class="navbar-inner"> 
-	<div class="container"> 
-	  <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> 
-	    <span class="icon-bar"></span> 
-	    <span class="icon-bar"></span> 
-	    <span class="icon-bar"></span> 
-	  </a> 
-	  <a class="brand" href="/">约饭局</a> 
-	  <div class="nav-collapse"> 
-	    <ul class="nav"> 
-	      <li class="active"><a href="/">首页</a></li> 
-	      <li><a href="/login">登入</a></li> 
-	      <li><a href="/reg"> 注册</a></li> 
-	    </ul> 
-	  </div> 
-	</div> 
-      </div> 
-    </div> 
-
-    <div id="container" class="container"> 
-      <div class="row">
-      <form class="form-horizontal">
-	<fieldset>
-	  <legend>写下英雄帖，召集你的小伙伴们吧~</legend>
-	  
-	  <div class="control-group">
-	    <label class="control-label" for="inputEmail">活动名称：</label>
-	    <div class="controls">
-	      <input type="text" id="inputEmail" placeholder="腐败活动~">
-	    </div>
-	  </div>
-	  <div class="control-group">
-	    <label class="control-label" for="inputEmail">活动时间：</label>
-	    <div class="controls">
-		<!--start -->
-		<div class="datepicker dropdown-menu" style="display: block; position:relative;">
-	<div class="datepicker-days" style="display: block;">
-		<table class=" table-condensed">
-			<thead>
-				<tr>
-					<th class="prev"> <i class="icon-arrow-left"></i>
-					</th>
-					<th colspan="5" class="switch">December 2013</th>
-					<th class="next"> <i class="icon-arrow-right"></i>
-					</th>
-				</tr>
-				<tr>
-					<th class="dow">Su</th>
-					<th class="dow">Mo</th>
-					<th class="dow">Tu</th>
-					<th class="dow">We</th>
-					<th class="dow">Th</th>
-					<th class="dow">Fr</th>
-					<th class="dow">Sa</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td class="day old">24</td>
-					<td class="day old">25</td>
-					<td class="day old">26</td>
-					<td class="day old">27</td>
-					<td class="day old">28</td>
-					<td class="day old">29</td>
-					<td class="day old">30</td>
-				</tr>
-				<tr>
-					<td class="day">1</td>
-					<td class="day">2</td>
-					<td class="day">3</td>
-					<td class="day">4</td>
-					<td class="day">5</td>
-					<td class="day">6</td>
-					<td class="day">7</td>
-				</tr>
-				<tr>
-					<td class="day">8</td>
-					<td class="day">9</td>
-					<td class="day">10</td>
-					<td class="day">11</td>
-					<td class="day">12</td>
-					<td class="day">13</td>
-					<td class="day">14</td>
-				</tr>
-				<tr>
-					<td class="day">15</td>
-					<td class="day">16</td>
-					<td class="day">17</td>
-					<td class="day">18</td>
-					<td class="day">19</td>
-					<td class="day">20</td>
-					<td class="day">21</td>
-				</tr>
-				<tr>
-					<td class="day">22</td>
-					<td class="day">23</td>
-					<td class="day">24</td>
-					<td class="day">25</td>
-					<td class="day active">26</td>
-					<td class="day">27</td>
-					<td class="day">28</td>
-				</tr>
-				<tr>
-					<td class="day">29</td>
-					<td class="day">30</td>
-					<td class="day">31</td>
-					<td class="day old">1</td>
-					<td class="day old">2</td>
-					<td class="day old">3</td>
-					<td class="day old">4</td>
-				</tr>
-			</tbody>
-		</table>
+	<div class="navbar navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</a>
+				<a class="brand" href="/">约饭局</a>
+				<div class="nav-collapse">
+					<ul class="nav">
+						<li class="active">
+							<a href="/">首页</a>
+						</li>
+						<li>
+							<a href="/login">登入</a>
+						</li>
+						<li>
+							<a href="/reg">注册</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
 	</div>
-	<div class="datepicker-months" style="display: none;">
-		<table class="table-condensed">
-			<thead>
-				<tr>
-					<th class="prev">
-						<i class="icon-arrow-left"></i>
-					</th>
-					<th colspan="5" class="switch">2013</th>
-					<th class="next">
-						<i class="icon-arrow-right"></i>
-					</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td colspan="7">
-						<span class="month">Jan</span>
-						<span class="month">Feb</span>
-						<span class="month">Mar</span>
-						<span class="month">Apr</span>
-						<span class="month">May</span>
-						<span class="month">Jun</span>
-						<span class="month">Jul</span>
-						<span class="month">Aug</span>
-						<span class="month">Sep</span>
-						<span class="month">Oct</span>
-						<span class="month">Nov</span>
-						<span class="month active">Dec</span>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-	<div class="datepicker-years" style="display: none;">
-		<table class="table-condensed">
-			<thead>
-				<tr>
-					<th class="prev">
-						<i class="icon-arrow-left"></i>
-					</th>
-					<th colspan="5" class="switch">2010-2019</th>
-					<th class="next">
-						<i class="icon-arrow-right"></i>
-					</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td colspan="7">
-						<span class="year old">2009</span>
-						<span class="year">2010</span>
-						<span class="year">2011</span>
-						<span class="year">2012</span>
-						<span class="year active">2013</span>
-						<span class="year">2014</span>
-						<span class="year">2015</span>
-						<span class="year">2016</span>
-						<span class="year">2017</span>
-						<span class="year">2018</span>
-						<span class="year">2019</span>
-						<span class="year old">2020</span>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-</div>    	
-	    	<!-- end -->
-	    </div>
-	  </div>
-	  <div class="control-group">
-	    <label class="control-label" for="inputEmail">活动地点：</label>
-	    <div class="controls">
-	      <input type="text" id="inputEmail" placeholder="去哪儿？？？">
-	    </div>
-	  </div>
-	  <div class="control-group">
-	    <label class="control-label" for="inputEmail">活动描述：</label>
-	    <div class="controls">
-	      <textarea rows="5" placeholder="腐败活动都干些啥，和小伙伴们说说呗~"></textarea>
-	    </div>
-	  </div>
-	  <div class="control-group">
-	    <div class="controls">
-	      <button type="submit" class="btn btn-primary">通过微博通知小伙伴们</button>
-	      <button type="submit" class="btn btn-primary">通过qq通知小伙伴们</button>
-	    </div>
-	  </div>
 
-	</fieldset>
-      </form>
-      <hr /> 
-      <footer> 
-      <p><a href="http://www.byvoid.com/" target="_blank">BYVoid</a> 2012</p> 
-      </footer> 
-    </div>
-    </div> 
-  </body> 
-  <script src="/javascripts/jquery.js"></script> 
-  <script src="/javascripts/bootstrap.js"></script> 
-</html> 
+	<div id="container" class="container">
+		<div class="row">
+			<form class="form-horizontal" method="post" action="/newEvent">
+				<fieldset>
+					<legend>写下英雄帖，召集你的小伙伴们吧~</legend>
 
+					<div class="control-group">
+						<label class="control-label" for="eventName">活动名称：</label>
+						<div class="controls">
+							<input type="text" id="eventName" name="eventName" placeholder="腐败活动~"></div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="dp1">活动时间：</label>
+						<div class="controls">
+							<input type="text" id="dp1" name="dp1" placeholder="活动日期~"></div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="where">活动地点：</label>
+						<div class="controls">
+							<input type="text" name="where" id="where" placeholder="去哪儿？？？"></div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="content">活动描述：</label>
+						<div class="controls">
+							<textarea rows="5" name="content" id="content" placeholder="腐败活动都干些啥，和小伙伴们说说呗~"></textarea>
+						</div>
+					</div>
+					<div class="control-group">
+						<div class="controls">
+							<button type="submit" class="btn btn-primary" id="save">保存</button>
+							<button type="submit" class="btn btn-primary">通过微博通知小伙伴们</button>
+							<button type="submit" class="btn btn-primary">通过qq通知小伙伴们</button>
+						</div>
+					</div>
+
+				</fieldset>
+			</form>
+			<hr />
+			<footer>
+				<p>
+					<a href="http://www.byvoid.com/" target="_blank">BYVoid</a>
+					2012
+				</p>
+			</footer>
+		</div>
+	</div>
+</body>
+	<script src="/javascripts/jquery-1.10.2.js"></script>
+	<script src="/javascripts/bootstrap.js"></script>
+	<script src="/javascripts/bootstrap-datepicker.js"></script>
+	<script type="text/javascript">
+    	$('#dp1').datepicker({
+				format: 'yyyymmdd',
+				autoclose:true
+		});
+    </script>
+
+</html>
