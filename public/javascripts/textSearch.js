@@ -65,7 +65,7 @@ $(".test").textSearch("空姐 凤姐 芙蓉姐",{markColor: "blue"});
             var t = $(this);
             str = $.trim(str);
             if(str === ""){
-                alert("关键字为空"); 
+                //alert("关键字为空"); 
                 return false;
             }else{
                 //将关键字push到数组之中

@@ -19,17 +19,17 @@
 	
 	<div class="span12">
 		<ul class="nav nav-pills">
-			<li class="active">
-				<a href="#">全部</a>
+			<li class="<%=searchType=="all"?"active":""%>">
+				<a href="/searchRst/<%=searchWord%>">全部</a>
 			</li>
-			<li>
-				<a href="#">饭局名</a>
+			<li class="<%=searchType=="name"?"active":""%>">
+				<a href="/searchRst/name/<%=searchWord%>">饭局名</a>
 			</li>
-			<li>
-				<a href="#">创建人</a>
+			<li class="<%=searchType=="creator"?"active":""%>">
+				<a href="/searchRst/creator/<%=searchWord%>">创建人</a>
 			</li>
-			<li>
-				<a href="#">简介</a>
+			<li class="<%=searchType=="comment"?"active":""%>">
+				<a href="/searchRst/comment/<%=searchWord%>">简介</a>
 			</li>
 		</ul>
 		
