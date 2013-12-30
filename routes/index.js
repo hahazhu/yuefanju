@@ -23,9 +23,7 @@ var search_comment ='select t.event_name,t.event_creator,date_format(t.event_crt
 				'order by t.event_crtime desc';
 module.exports = function(app) {
 	app.post('/searchRst', function(req, res) {
-		console.log('12313123');
-		console.log('The length is: ', req.body.searchText);
-		res.redirect('/searchRst/' + req.body.searchText);
+		res.redirect('/searchRst/all/' + req.body.searchText);
 	});
 	app.get('/', function(req, res) {
 		res.render('index', {
@@ -33,17 +31,18 @@ module.exports = function(app) {
 			layout: 'template'
 		})
 	});
-	app.get('/searchRst/', function(req, res) {
+	app.get('/searchRst/all', function(req, res) {
 		var pool = require('../model/db').pool;
 		pool.getConnection(function(err, conn) {
 			conn.query(search_none, function(
 					err, rows, fields) {
 				if (err)
 					throw err;
-				console.log('The length1 is: ', rows.length);
+//				console.log('The length1 is: ', rows.length);
 				conn.release();
 				res.render('searchRst', {
 					searchWord : '',
+					searchType :'all',
 					rstLength : rows.length,
 					rowRst : rows,
 					layout: 'template'
@@ -51,7 +50,7 @@ module.exports = function(app) {
 			});
 		});
 	});
-	app.get('/searchRst/:searchText', function(req, res) {
+	app.get('/searchRst/all/:searchText', function(req, res) {
 		var pool = require('../model/db').pool;
 		
         var r = /\s+/g;
@@ -63,7 +62,6 @@ module.exports = function(app) {
 					err, rows, fields) {
 				if (err)
 					throw err;
-				console.log('The all length is: ', rows.length);
 				conn.release();
 				res.render('searchRst', {
 					searchWord : req.params.searchText,
@@ -87,7 +85,6 @@ module.exports = function(app) {
 					err, rows, fields) {
 				if (err)
 					throw err;
-				console.log('The name length is: ', rows.length);
 				conn.release();
 				res.render('searchRst', {
 					searchWord : req.params.searchText,
@@ -111,7 +108,6 @@ module.exports = function(app) {
 					err, rows, fields) {
 				if (err)
 					throw err;
-				console.log('The name length is: ', rows.length);
 				conn.release();
 				res.render('searchRst', {
 					searchWord : req.params.searchText,
@@ -135,7 +131,6 @@ module.exports = function(app) {
 					err, rows, fields) {
 				if (err)
 					throw err;
-				console.log('The name length is: ', rows.length);
 				conn.release();
 				res.render('searchRst', {
 					searchWord : req.params.searchText,
@@ -159,6 +154,7 @@ module.exports = function(app) {
 				if(err){
 					throw err;
 				}
+				conn.release();
 				res.render('index',{
 					title:'express',
 					layout: 'template'
