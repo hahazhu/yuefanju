@@ -20,8 +20,9 @@
 	<div class="span12">
 		<ul class="nav nav-pills">
 			<li class="<%=searchType=="all"?"active":""%>">
-				<a href="/searchRst/<%=searchWord%>">全部</a>
+				<a href="/searchRst/all/<%=searchWord%>">全部</a>
 			</li>
+			<%if(searchWord!=""){%>
 			<li class="<%=searchType=="name"?"active":""%>">
 				<a href="/searchRst/name/<%=searchWord%>">饭局名</a>
 			</li>
@@ -31,6 +32,7 @@
 			<li class="<%=searchType=="comment"?"active":""%>">
 				<a href="/searchRst/comment/<%=searchWord%>">简介</a>
 			</li>
+			<%}%>
 		</ul>
 		
 	<div  class="span12">
