@@ -414,7 +414,7 @@
 		},
 
 		hide: function(){
-			if(this.isInline) return;
+			/*if(this.isInline) return;
 			if (!this.picker.is(':visible')) return;
 			this.focusDate = null;
 			this.picker.hide().detach();
@@ -430,7 +430,7 @@
 				)
 			)
 				this.setValue();
-			this._trigger('hide');
+			this._trigger('hide');*/
 		},
 
 		remove: function() {
