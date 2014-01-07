@@ -57,10 +57,11 @@
 						<div class="controls">
 							<input type="text" id="eventName" name="eventName" placeholder="腐败活动~"></div>
 					</div>
-					<div class="control-group">
+					<div class="control-group" style="height:410px">
 						<label class="control-label" for="dp1">活动时间：</label>
 						<div class="controls">
-							<input type="text" id="dp1" name="dp1" placeholder="活动日期~"></div>
+							<input type="text" id="dp1" name="dp1" placeholder="活动日期~">
+						</div>
 					</div>
 					<div class="control-group">
 						<label class="control-label" for="where">活动地点：</label>
@@ -70,7 +71,7 @@
 					<div class="control-group">
 						<label class="control-label" for="content">活动描述：</label>
 						<div class="controls">
-							<textarea rows="5" name="content" id="content" placeholder="腐败活动都干些啥，和小伙伴们说说呗~"></textarea>
+							<textarea rows="5" name="content" id="content" placeholder="腐败活动都干些啥，和小伙伴们说说~"></textarea>
 						</div>
 					</div>
 					<div class="control-group">
@@ -98,9 +99,12 @@
 	<script src="/javascripts/bootstrap-datepicker.js"></script>
 	<script type="text/javascript">
     	$('#dp1').datepicker({
-				format: 'yyyymmdd',
-				autoclose:true
+				format: 'yyyy-mm-dd',
+				autoclose:false,
+				todayHighlight:true
+
 		});
+		$('#dp1').trigger('focus');
     </script>
 
 </html>
