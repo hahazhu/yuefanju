@@ -57,7 +57,7 @@
 						<div class="controls">
 							<input type="text" id="eventName" name="eventName" placeholder="腐败活动~"></div>
 					</div>
-					<div class="control-group" style="height:410px">
+					<div class="control-group" style="height:360px">
 						<label class="control-label" for="dp1">活动时间：</label>
 						<div class="controls">
 							<input type="text" id="dp1" name="dp1" placeholder="活动日期~">
@@ -77,8 +77,8 @@
 					<div class="control-group">
 						<div class="controls">
 							<button type="submit" class="btn btn-primary" id="save">保存</button>
-							<button type="submit" class="btn btn-primary">通过微博通知小伙伴们</button>
-							<button type="submit" class="btn btn-primary">通过qq通知小伙伴们</button>
+						<!--	<button type="submit" class="btn btn-primary">通过微博通知小伙伴们</button>
+							<button type="submit" class="btn btn-primary">通过qq通知小伙伴们</button>-->
 						</div>
 					</div>
 
@@ -87,8 +87,7 @@
 			<hr />
 			<footer>
 				<p>
-					<a href="http://www.byvoid.com/" target="_blank">BYVoid</a>
-					2012
+					<a href="http://www.byvoid.com/" target="_blank">约饭局</a>
 				</p>
 			</footer>
 		</div>
@@ -105,6 +104,10 @@
 
 		});
 		$('#dp1').trigger('focus');
+		$('#dp1').change(function(){
+			$('#where').val($('#dp1').val());
+
+		})
     </script>
 
 </html>
