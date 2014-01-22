@@ -12,9 +12,9 @@
 		padding-bottom: 40px; 
       }
     .datepicker td, .datepicker th {
-    	width: 80px;
-    	height: 40px;
-    	font-size: 20px;
+    	width: 60px;
+    	height: 30px;
+    	font-size: 16px;
 	} 
     </style>
 </head>
@@ -47,50 +47,60 @@
 	</div>
 
 	<div id="container" class="container">
-		<div class="row">
-			<form class="form-horizontal" method="post" action="/newEvent">
-				<fieldset>
-					<legend>写下英雄帖，召集你的小伙伴们吧~</legend>
+		<form class="form-horizontal" method="post" action="/newEvent">
+			<fieldset>
+				<div class="row">
+					<div class="span10">
+				<legend>写下英雄帖，召集你的小伙伴们吧~</legend>
 
-					<div class="control-group">
-						<label class="control-label" for="eventName">活动名称：</label>
-						<div class="controls">
-							<input type="text" id="eventName" name="eventName" placeholder="腐败活动~"></div>
+				<div class="control-group">
+					<label class="control-label" for="eventName">活动名称：</label>
+					<div class="controls">
+						<input type="text" id="eventName" name="eventName" placeholder="腐败活动~"></div>
+				</div>
+				<div class="control-group" style="height:410px">
+					<label class="control-label" for="dp1">活动时间：</label>
+					<div class="controls">
+						<input type="text" id="dp1" name="dp1" placeholder="活动日期~">
 					</div>
-					<div class="control-group" style="height:360px">
-						<label class="control-label" for="dp1">活动时间：</label>
-						<div class="controls">
-							<input type="text" id="dp1" name="dp1" placeholder="活动日期~">
-						</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="where">活动地点：</label>
+					<div class="controls">
+						<input type="text" name="where" id="where" placeholder="去哪儿？？？"></div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="content">活动描述：</label>
+					<div class="controls">
+						<textarea rows="5" name="content" id="content" placeholder="腐败活动都干些啥，和小伙伴们说说~"></textarea>
 					</div>
-					<div class="control-group">
-						<label class="control-label" for="where">活动地点：</label>
-						<div class="controls">
-							<input type="text" name="where" id="where" placeholder="去哪儿？？？"></div>
+				</div>
+				<div class="control-group">
+					<div class="controls">
+						<button type="submit" class="btn btn-primary" id="save">保存</button>
+					<!--	<button type="submit" class="btn btn-primary">通过微博通知小伙伴们</button>
+						<button type="submit" class="btn btn-primary">通过qq通知小伙伴们</button>-->
 					</div>
-					<div class="control-group">
-						<label class="control-label" for="content">活动描述：</label>
-						<div class="controls">
-							<textarea rows="5" name="content" id="content" placeholder="腐败活动都干些啥，和小伙伴们说说~"></textarea>
-						</div>
-					</div>
-					<div class="control-group">
-						<div class="controls">
-							<button type="submit" class="btn btn-primary" id="save">保存</button>
-						<!--	<button type="submit" class="btn btn-primary">通过微博通知小伙伴们</button>
-							<button type="submit" class="btn btn-primary">通过qq通知小伙伴们</button>-->
-						</div>
-					</div>
-
-				</fieldset>
-			</form>
-			<hr />
-			<footer>
-				<p>
-					<a href="http://www.byvoid.com/" target="_blank">约饭局</a>
-				</p>
-			</footer>
-		</div>
+				</div>
+			</div>
+			<div class="span2" style="margin-top:200px;">
+				<ul id="dateList">
+					<li><label>20130101</label></li>
+					<li><label>20130101</label></li>
+					<li><label>20130101</label></li>
+					<li><label>20130101</label></li>
+					<li><label>20130101</label></li>
+				</ol>
+			</div>
+			</div>
+			</fieldset>
+		</form>
+		<hr />
+		<footer>
+			<p>
+				<a href="http://www.byvoid.com/" target="_blank">约饭局</a>
+			</p>
+		</footer>
 	</div>
 </body>
 	<script src="/javascripts/jquery-1.10.2.js"></script>
