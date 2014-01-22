@@ -3,6 +3,7 @@
 			$(window).load(function() {
 		            $("body").textSearch("<%=searchWord%>",{markColor: "red",divStr: " "});
 		        });
+		        alert($.md5("Hello,Liehuo.Net"));
 		 });
 </script>
 <div>
@@ -42,21 +43,23 @@
 		<% for(i=0;i<rstLength;i++){
 			var name = rowRst[i].event_name;
 			var creator=  rowRst[i].event_creator;
+			var is_pwd=  rowRst[i].event_ispwd;
+			var password=  rowRst[i].event_password;
 			var ctime = rowRst[i].event_crtime;
 			var comment= rowRst[i].event_comment;
 		 %>
 		<h2>
+			<%if(is_pwd==1){%>
+				<img src="/images/event_lock.gif"  alt="加密" />
+			<%}%>
 			活动名称：<%=name%>
 		</h2>
-		<p>
-			创建人： <%=creator%>
-		</p>
 		<p>
 			创建时间： <%=ctime%>
 		</p>
 		<p>
 			活动描述： <%=comment%>
-		</p>
+		</p>	
 		<p>
 			<a class="btn" href="#">点击进入 »</a>
 		</p>
