@@ -111,6 +111,10 @@
 		});
 		$('#dp1').trigger('focus');
 		$('#dp1').change(function(){
+			if(dateList.length>=10){
+				alert('不能超过10个备选日期');	
+				return;
+			}
 			if($('#dp1').val()!=''){
 				if($.inArray($('#dp1').val(), dateList)===-1){
 					$('#dateList').append('<li>'+$('#dp1').val()+'<i class="icon-remove"></i></li>');
