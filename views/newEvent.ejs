@@ -85,11 +85,6 @@
 			</div>
 			<div class="span2" style="margin-top:200px;">
 				<ul id="dateList">
-					<li><label >20130101<i class="icon-remove"></i></label></li>
-					<li><label >20130101<i class="icon-remove"></i></label></li>
-					<li><label >20130101<i class="icon-remove"></i></label></li>
-					<li><label >20130101<i class="icon-remove"></i></label></li>
-					<li><label >20130101<i class="icon-remove"></i></label></li>
 				</ol>
 			</div>
 			</div>
@@ -107,6 +102,7 @@
 	<script src="/javascripts/bootstrap.js"></script>
 	<script src="/javascripts/bootstrap-datepicker.js"></script>
 	<script type="text/javascript">
+		var dateList = [];
     	$('#dp1').datepicker({
 				format: 'yyyy-mm-dd',
 				autoclose:false,
@@ -115,9 +111,18 @@
 		});
 		$('#dp1').trigger('focus');
 		$('#dp1').change(function(){
-			$('#where').val($('#dp1').val());
+			if($('#dp1').val()!=''){
+				if($.inArray($('#dp1').val(), dateList)===-1){
+					$('#dateList').append('<li>'+$('#dp1').val()+'<i class="icon-remove"></i></li>');
+					dateList.push($('#dp1').val());
+				}
+			}
 
-		})
+		});
+		$('#dateList').delegate('i', 'click', function(event) {
+			$(this).parent().remove();			
+		});
+
     </script>
 
 </html>
