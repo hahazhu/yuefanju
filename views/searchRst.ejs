@@ -1,10 +1,27 @@
 <script language="javascript" type ="text/javascript">
+var event_password="";
 		$(document).ready(function() {
 			$(window).load(function() {
 		            $("body").textSearch("<%=searchWord%>",{markColor: "red",divStr: " "});
+		            $('#hint').hide();
 		        });
-		        alert($.md5("Hello,Liehuo.Net"));
 		 });
+		 
+		 function forward(){
+		  //	alert(event_password);
+		  	var md_pwd=$.md5($('#password').val());
+		  	if(event_password==md_pwd){
+			 	$('#pass_entry').modal('toggle');
+			 	$('#chose_participant').modal('toggle');
+		 	}else{
+		 		$('#hint').show();
+		 	}
+		 }
+		 
+		 function setPwd(pwd){
+		 	event_password=pwd;
+		 }
+		 
 </script>
 <div>
 	<a href="/"> <img src="/images/logo1.png"  alt="简单轻松约饭局" /></a>
@@ -51,8 +68,10 @@
 		<h2>
 			<%if(is_pwd==1){%>
 				<img src="/images/event_lock.gif"  alt="加密" />
+				<a href="#pass_entry" role="button"  data-toggle="modal" onclick="setPwd('<%=password%>');">活动名称：<%=name%></a>
+			<%}else{%>
+				<a href="#chose_participant" role="button"  data-toggle="modal">活动名称：<%=name%></a>
 			<%}%>
-			活动名称：<%=name%>
 		</h2>
 		<p>
 			创建时间： <%=ctime%>
@@ -60,14 +79,39 @@
 		<p>
 			活动描述： <%=comment%>
 		</p>	
-		<p>
-			<a class="btn" href="#">点击进入 »</a>
-		</p>
 		<%}%>
 	</div>
 	
-	<div class="row-fluid">
-		<div class="span12">
-		<a class="btn" href="#">显示更多</a>
-		</div>
-	</div>
+<button type="button" data-toggle="modal" data-target="#chose_participant">Launch modal</button>
+
+<div id="pass_entry" class="modal hide fade">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3>请输入密码</h3>
+  </div>
+  <div class="modal-body">
+    <p>
+   	 请输入密码：<input type="text" class="input-large search-query" id="password" name ="password" />
+    </p>
+	<p id="hint" name ="hint">密码是123，请输入正确密码</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn" data-dismiss="modal" aria-hidden="true">取消</a>
+    <a href="#" class="btn" onclick="forward();">确定</a>
+  </div>
+</div>
+
+
+<div id="chose_participant" class="modal hide fade">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">选择用户</h3>
+  </div>
+  <div class="modal-body">
+    <p>请选择参与者</p>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+    <button class="btn btn-primary">确定</button>
+  </div>
+</div>
