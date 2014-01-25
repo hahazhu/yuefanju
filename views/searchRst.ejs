@@ -7,11 +7,18 @@ var event_password="";
 		        });
 		 });
 		 
+		 function submit(eventId,participantName){
+		 	$('#eventId').val(eventId);
+		 	$('#participantName').val(participantName);
+		 	alert($('#eventId').val()+","+$('#participantName').val());
+		 	document.thisForm.submit();
+		 }
+		 
 		 function ajaxGetParts(eventId) {
             $.post('/ajaxQ',{ querySql: "select event_participant_name from dat_event_participant t where t.event_id= '1' " }, function(data) {
             	    var content="";
             	    for(i=0;i<data.rstLength;i++){
-            	    	content+="<p><a href='#' onclick ='alert(1)'>"+data.rowRst[i].event_participant_name+"</a></p>";
+            	    	content+="<p><a href='#' onclick =\"submit(\'"+eventId+"\',\'"+data.rowRst[i].event_participant_name+"\')\">"+data.rowRst[i].event_participant_name+"</a></p>";
             	    }
             	    $("#userList").html(content);
 			});
@@ -122,11 +129,11 @@ var event_password="";
   </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
-    <button class="btn btn-primary" onclick='ajaxGetParts(1);'>确定</button>
+    <button class="btn btn-primary" onclick="submit('1','gao');">确定</button>
   </div>
 </div>
 
-<form class="form-horizontal" method="post" action="/enterMain">
-	<input type="text" class="input-xlarge" id="eventId" value="">
-	<input type="text" class="input-xlarge" id="paticipantName" value="">
+<form name="thisForm" class="form-horizontal" method="post" action="/enterMain">
+	<input type="hidden" id="eventId" name ="eventId" value="">
+	<input type="hidden" id="participantName" name ="participantName" value="">
 </form>
