@@ -2,7 +2,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
-	<title>约饭局1</title>
+	<title>约饭局</title>
 	<link rel='stylesheet' href='/stylesheets/bootstrap.css' />
 	<link rel='stylesheet' href='/stylesheets/datepicker.css' />
 
@@ -47,22 +47,50 @@
 	</div>
 
 	<div id="container" class="container">
-		<form name="eventForm" class="form-horizontal" method="post" action="/newEvent">
-			<input type="hidden" name="dateListStr" id="dateListStr"/>
+		<form class="form-horizontal" method="post" action="/submitEventDate">
+			<input type="hidden" id="event_id" name="event_id" value="<%=event_id%>">
 			<fieldset>
 				<div class="row">
 					<div class="span10">
-				<legend>写下英雄帖，召集你的小伙伴们吧~</legend>
+				<legend>选择您空闲的时间~</legend>
 
 				<div class="control-group">
 					<label class="control-label" for="eventName">活动名称：</label>
 					<div class="controls">
-						<input type="text" id="eventName" name="eventName" placeholder="腐败活动~"></div>
+						<input type="text" id="eventName" readonly name="eventName" value="<%=name%>">
+					</div>
 				</div>
-				<div class="control-group" style="height:360px">
+				<div class="control-group" style="">
 					<label class="control-label" for="dp1">活动时间：</label>
-					<div class="controls">
-						<input type="text" id="dp1" name="dp1" placeholder="活动日期~">
+					<div class="controls" style="display:inline-block;margin-left:10px">
+						<% for(i=0;i<rowRst.length;i++){
+							var when_seq = rowRst[i].when_seq;
+							var when_describe=  rowRst[i].when_describe;
+							var year = when_describe.substr(0,4);
+							var month = when_describe.substr(5,2);
+							var day = when_describe.substr(8,2);
+
+						%>
+							<div class="dayToChoose" style="border:1px solid;width:100px;height:120px;border-radius:5px;display:inline-block;">
+								<table class=" table-condensed" style="width:100%">
+									<thead>
+										<tr>
+											<th colspan="5" class="datepicker-switch"> <%=year%>年 <%=month%>月</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td class="day" colspan="5" rowspan="6" style="font-size:50px;text-align:center;padding-top:20px;padding-bottom:20px"><%=day%></td>
+										</tr>
+									</tbody>
+									<tfoot>
+										<tr>
+											<th  colspan="5" class="datepicker-switch"style="font-size:20px">星期一<i  id="choose" class="icon-ok" style="display:none"></i></th>
+										</tr>
+									</tfoot>
+								</table>
+							</div>
+						<%}%>
 					</div>
 				</div>
 				<div class="control-group">
@@ -71,20 +99,12 @@
 						<input type="text" name="where" id="where" placeholder="去哪儿？？？"></div>
 				</div>
 				<div class="control-group">
-					<label class="control-label" for="where">密码：</label>
-					<div class="controls">
-						<input type="password" name="password1" id="password1" placeholder="活动密码"></div>
-				</div>
-				<div class="control-group">
-					<label class="control-label" for="where">再次输入密码：</label>
-					<div class="controls">
-						<input type="password" name="password2" id="password2" placeholder="活动密码"></div>
-				</div>
-				<div class="control-group">
 					<label class="control-label" for="content">活动描述：</label>
 					<div class="controls">
-						<textarea rows="5" name="content" id="content" placeholder="腐败活动都干些啥，和小伙伴们说说~"></textarea>
+						<textarea rows="5" name="content" id="content" placeholder="腐败活动都干些啥，和小伙伴们说说~"><%=comment%>
+						</textarea>
 					</div>
+
 				</div>
 				<div class="control-group">
 					<label class="control-label" for="content">活动参与人</label>
@@ -94,7 +114,7 @@
 				</div>
 				<div class="control-group">
 					<div class="controls">
-						<button type="submit" class="btn btn-primary" id="save">提交！获取活动链接</button>
+						<button type="submit" class="btn btn-primary" id="save">提交！</button>
 					<!--	<button type="submit" class="btn btn-primary">通过微博通知小伙伴们</button>
 						<button type="submit" class="btn btn-primary">通过qq通知小伙伴们</button>-->
 					</div>
@@ -119,36 +139,11 @@
 	<script src="/javascripts/bootstrap.js"></script>
 	<script src="/javascripts/bootstrap-datepicker.js"></script>
 	<script type="text/javascript">
-		var dateList = [];
-    	$('#dp1').datepicker({
-				format: 'yyyy-mm-dd',
-				autoclose:false,
-				todayHighlight:true
-
-		});
-		$('#dp1').trigger('focus');
-		$('#dp1').change(function(){
-			if(dateList.length>=10){
-				alert('不能超过10个备选日期');	
-				return;
-			}
-			if($('#dp1').val()!=''){
-				if($.inArray($('#dp1').val(), dateList)===-1){
-					$('#dateList').append('<li>'+$('#dp1').val()+'<i class="icon-remove"></i></li>');
-					dateList.push($('#dp1').val());
-				}
-			}
-
-		});
 		$('#save').click(function(event) {
-			var dateStrTmp = dateList.join(";");
-			$('#dateListStr').val(dateStrTmp);
 			eventForm.submit();
 		});
-		$('#dateList').delegate('i', 'click', function(event) {
-			$(this).parent().remove();			
+		$('.dayToChoose').click(function(event) {
+			alert(1);
+			alert($(this).children('#choose').html());
 		});
-
-    </script>
-
 </html>
