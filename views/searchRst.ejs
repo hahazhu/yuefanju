@@ -7,11 +7,21 @@ var event_password="";
 		        });
 		 });
 		 
+		 function ajaxGetParts(eventId) {
+            $.post('/ajaxQ',{ querySql: "select event_participant_name from dat_event_participant t where t.event_id= '1' " }, function(data) {
+            	    var content="";
+            	    for(i=0;i<data.rstLength;i++){
+            	    	content+="<p><a href='#' onclick ='alert(1)'>"+data.rowRst[i].event_participant_name+"</a></p>";
+            	    }
+            	    $("#userList").html(content);
+			});
+        }
+		 
 		 function forward(){
-		  //	alert(event_password);
 		  	var md_pwd=$.md5($('#password').val());
 		  	if(event_password==md_pwd){
 			 	$('#pass_entry').modal('toggle');
+			 	ajaxGetParts(1);
 			 	$('#chose_participant').modal('toggle');
 		 	}else{
 		 		$('#hint').show();
@@ -70,7 +80,7 @@ var event_password="";
 				<img src="/images/event_lock.gif"  alt="加密" />
 				<a href="#pass_entry" role="button"  data-toggle="modal" onclick="setPwd('<%=password%>');">活动名称：<%=name%></a>
 			<%}else{%>
-				<a href="#chose_participant" role="button"  data-toggle="modal">活动名称：<%=name%></a>
+				<a href="#chose_participant" role="button"  data-toggle="modal" onclick="ajaxGetParts(1);">活动名称：<%=name%></a>
 			<%}%>
 		</h2>
 		<p>
@@ -107,11 +117,16 @@ var event_password="";
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
     <h3 id="myModalLabel">选择用户</h3>
   </div>
-  <div class="modal-body">
     <p>请选择参与者</p>
+  <div class="modal-body" id='userList'>
   </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
-    <button class="btn btn-primary">确定</button>
+    <button class="btn btn-primary" onclick='ajaxGetParts(1);'>确定</button>
   </div>
 </div>
+
+<form class="form-horizontal" method="post" action="/enterMain">
+	<input type="text" class="input-xlarge" id="eventId" value="">
+	<input type="text" class="input-xlarge" id="paticipantName" value="">
+</form>
