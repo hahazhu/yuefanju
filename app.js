@@ -5,6 +5,7 @@
 var express = require('express');
 var routes = require('./routes/index');
 var ajax = require('./routes/ajax');
+var rst_list = require('./routes/rst_list');
 var http = require('http');
 var path = require('path');
 var partials = require('express-partials'); 
@@ -27,6 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 routes(app);
 ajax(app);
+rst_list(app);
 // development only
 if ('development' == app.get('env')) {
 	app.use(express.errorHandler());
