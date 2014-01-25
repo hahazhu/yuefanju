@@ -4,13 +4,15 @@ var event_password="";
 			$(window).load(function() {
 		            $("body").textSearch("<%=searchWord%>",{markColor: "red",divStr: " "});
 		            $('#hint').hide();
+		            //$('#newPartDiv').hide();
 		        });
 		 });
 		 
 		 function submit(eventId,participantName){
 		 	$('#eventId').val(eventId);
 		 	$('#participantName').val(participantName);
-		 	alert($('#eventId').val()+","+$('#participantName').val());
+		 	$('#newPartName').val($('#newPart').val());
+//		 	alert($('#eventId').val()+","+$('#participantName').val());
 		 	document.thisForm.submit();
 		 }
 		 
@@ -38,7 +40,6 @@ var event_password="";
 		 function setPwd(pwd){
 		 	event_password=pwd;
 		 }
-		 
 </script>
 <div>
 	<a href="/"> <img src="/images/logo1.png"  alt="简单轻松约饭局" /></a>
@@ -127,6 +128,8 @@ var event_password="";
     <p>请选择参与者</p>
   <div class="modal-body" id='userList'>
   </div>
+  <p><a href='#' onclick='showCreatPart()'>如果您不是上述人员，请创建</a></p>
+  <p id="newPartDiv" name ="newPartDiv"><input  id="newPart" name ="newPart" value="" /></p>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
     <button class="btn btn-primary" onclick="submit('1','gao');">确定</button>
@@ -136,4 +139,5 @@ var event_password="";
 <form name="thisForm" class="form-horizontal" method="post" action="/enterMain">
 	<input type="hidden" id="eventId" name ="eventId" value="">
 	<input type="hidden" id="participantName" name ="participantName" value="">
+	<input type="hidden" id="newPartName" name ="newPartName" value="" />
 </form>
