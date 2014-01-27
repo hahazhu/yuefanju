@@ -2,25 +2,25 @@
  * GET home page.
  */
 //未输入搜索内容
-var search_none ='select t.event_name,t.event_creator,t.event_ispwd,t.event_password, date_format(t.event_crtime,\'%Y年%m月%d日\') as event_crtime ,t.event_comment '+
+var search_none ='select t.event_id,t.event_name,t.event_creator,t.event_ispwd,t.event_password, date_format(t.event_crtime,\'%Y年%m月%d日\') as event_crtime ,t.event_comment '+
 				'from dat_event_info t order by t.event_crtime desc';
 //输入搜索内容，但是未选择类别
-var search_all ='select t.event_name,t.event_creator,t.event_ispwd,t.event_password, date_format(t.event_crtime,\'%Y年%m月%d日\') as event_crtime,t.event_comment  '+
+var search_all ='select t.event_id,t.event_name,t.event_creator,t.event_ispwd,t.event_password, date_format(t.event_crtime,\'%Y年%m月%d日\') as event_crtime,t.event_comment  '+
 				'from dat_event_info t where t.event_name REGEXP ? or t.event_creator REGEXP ? or t.event_comment REGEXP ?'+
 				'order by t.event_crtime desc';
 var insertEvent = 'insert into dat_event_info(event_name,event_ispwd,event_password,event_crtime,event_comment) values (?,?,?,now(),?) ';
 var selectEventDate = 'SELECT when_seq,when_describe FROM yuefanju.event_when_option where event_id = ? ';
 var selectEVentInfo = 'SELECT event_name,event_comment FROM yuefanju.dat_event_info where event_id = ?'
 //输入搜索内容，仅仅是活动名称
-var search_name ='select t.event_name,t.event_creator,t.event_ispwd,t.event_password,date_format(t.event_crtime,\'%Y年%m月%d日\') as event_crtime,t.event_comment  '+
+var search_name ='select t.event_id,t.event_name,t.event_creator,t.event_ispwd,t.event_password,date_format(t.event_crtime,\'%Y年%m月%d日\') as event_crtime,t.event_comment  '+
 				'from dat_event_info t where t.event_name REGEXP ?'+
 				'order by t.event_crtime desc';
 //输入搜索内容，仅仅是活动创建者
-var search_creator ='select t.event_name,t.event_creator,t.event_ispwd,t.event_password,date_format(t.event_crtime,\'%Y年%m月%d日\') as event_crtime,t.event_comment  '+
+var search_creator ='select t.event_id,t.event_name,t.event_creator,t.event_ispwd,t.event_password,date_format(t.event_crtime,\'%Y年%m月%d日\') as event_crtime,t.event_comment  '+
 				'from dat_event_info t where t.event_creator REGEXP ?'+
 				'order by t.event_crtime desc';
 //输入搜索内容，仅仅是活动简介
-var search_comment ='select t.event_name,t.event_creator,t.event_ispwd,t.event_password,date_format(t.event_crtime,\'%Y年%m月%d日\') as event_crtime,t.event_comment  '+
+var search_comment ='select t.event_id,t.event_name,t.event_creator,t.event_ispwd,t.event_password,date_format(t.event_crtime,\'%Y年%m月%d日\') as event_crtime,t.event_comment  '+
 				'from dat_event_info t where t.event_comment REGEXP ?'+
 				'order by t.event_crtime desc';
 module.exports = function(app) {

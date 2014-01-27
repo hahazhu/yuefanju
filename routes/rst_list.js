@@ -7,6 +7,7 @@ module.exports = function(app) {
 		var eventId = req.body.eventId;
 		var newPartName=req.body.newPartName;
 		console.log(req.body.eventId);
+		console.log(req.body.newPartName);
 		var values = [''+eventId+'',''+newPartName+'',''+newPartName+'']
 		if(newPartName!=''){
 			var pool = require('../model/db').pool;
