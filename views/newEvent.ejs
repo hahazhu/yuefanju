@@ -118,6 +118,7 @@
 	<script src="/javascripts/jquery-1.10.2.js"></script>
 	<script src="/javascripts/bootstrap.js"></script>
 	<script src="/javascripts/bootstrap-datepicker.js"></script>
+	<script src="/javascripts/jquery.md5.js"></script>
 	<script type="text/javascript">
 		var dateList = [];
     	$('#dp1').datepicker({
@@ -143,6 +144,7 @@
 		$('#save').click(function(event) {
 			var dateStrTmp = dateList.join(";");
 			$('#dateListStr').val(dateStrTmp);
+			$('#password2').val($.md5($('#password2').val()));
 			eventForm.submit();
 		});
 		$('#dateList').delegate('i', 'click', function(event) {
