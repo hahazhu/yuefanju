@@ -2,9 +2,8 @@
 var event_password="";
 		$(document).ready(function() {
 			$(window).load(function() {
-		            $("body").textSearch("<%=searchWord%>",{markColor: "red",divStr: " "});
+		            $("#list").textSearch("<%=searchWord%>",{markColor: "red"});
 		            $('#hint').hide();
-		            //$('#newPartDiv').hide();
 		        });
 		 });
 		 
@@ -17,13 +16,12 @@ var event_password="";
 		 }
 		 
 		 function ajaxGetParts(eventId) {
-		 	//alert(eventId);
 		 	$('#eventId').val(eventId);
 		    var sql="select event_participant_name from dat_event_participant t where t.event_id= '"+eventId+"' ";
-		    //alert(sql);
             $.post('/ajaxQ',{ querySql: sql }, function(data) {
             	    var content="";
-            	    for(i=0;i<data.rstLength;i++){
+            	    var length=data.rstLength;
+            	    for(i=0;i<length;i++){
             	    	content+="<p><a href='#' onclick =\"submit(\'"+eventId+"\',\'"+data.rowRst[i].event_participant_name+"\')\">"+data.rowRst[i].event_participant_name+"</a></p>";
             	    }
             	    $("#userList").html(content);
@@ -79,11 +77,11 @@ var event_password="";
 			</li>
 			<%}%>
 		</ul>
-		
+	</div>
 	<div  class="span12">
 搜索到关于“<%=searchWord%>”的结果如下：共有数据<%=rstLength%>条
 	</div>
-	
+	<div class="span12" id='list' name ='list'>
 		<% for(i=0;i<rstLength;i++){
 			var id = rowRst[i].event_id;
 			var name = rowRst[i].event_name;
@@ -110,7 +108,6 @@ var event_password="";
 		<%}%>
 	</div>
 	
-<button type="button" data-toggle="modal" data-target="#chose_participant">Launch modal</button>
 
 <div id="pass_entry" class="modal hide fade">
   <div class="modal-header">
