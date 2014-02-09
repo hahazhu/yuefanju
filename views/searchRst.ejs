@@ -4,23 +4,28 @@ var event_password="";
 			$(window).load(function() {
 		            $("#list").textSearch("<%=searchWord%>",{markColor: "red"});
 		            $('#hint').hide();
+		            $('#hint2').hide();
+		            $('#newPartDiv').hide();
 		        });
 		 });
 		 
 		 function submit(){
-		 //	$('#eventId').val(eventId);
-		 //	$('#participantName').val(participantName);
+		 	if($('#newPart').val()==''){
+		 		$('#hint2').show();
+		 		return false;
+		 	}
 		 	$('#newPartName').val($('#newPart').val());
-		 	alert($('#eventId').val()+","+$('#participantName').val()+","+$('#newPartName').val());
 		 	document.thisForm.submit();
 		 }
 		 
 		 function ajaxGetParts(eventId) {
+		 	clearall();
 		 	$('#eventId').val(eventId);
 		    var sql="select event_participant_name from dat_event_participant t where t.event_id= '"+eventId+"' ";
             $.post('/ajaxQ',{ querySql: sql }, function(data) {
             	    var content="";
             	    var length=data.rstLength;
+            	    var i=0;
             	    for(i=0;i<length;i++){
             	    	content+="<p><a href='#' onclick =\"submit(\'"+eventId+"\',\'"+data.rowRst[i].event_participant_name+"\')\">"+data.rowRst[i].event_participant_name+"</a></p>";
             	    }
@@ -30,7 +35,6 @@ var event_password="";
 		 
 		 function forward(){
 		  	var md_pwd=$.md5($('#password').val());
-		  	//alert($('#eventId').val());
 		  	if(event_password==md_pwd){
 			 	$('#pass_entry').modal('toggle');
 			 	ajaxGetParts($('#eventId').val());
@@ -41,11 +45,17 @@ var event_password="";
 		 }
 		 
 		 function setPwd(id,pwd){
-		 	//alert(id);
-		 	//alert(pwd);
+		 	clearall();
 		 	$('#eventId').val(id);
-		 	//alert(event_password);
 		 	event_password=pwd;
+		 }
+		 
+		 function clearall(){
+		    $('#password').val('');
+		    $('#newPart').val('');
+		 	$('#hint').hide();
+		 	$('#hint2').hide();
+		 	$('#newPartDiv').hide();
 		 }
 </script>
 <div>
@@ -135,11 +145,14 @@ var event_password="";
     <p>请选择参与者</p>
   <div class="modal-body" id='userList'>
   </div>
-  <p><a href='#' onclick='showCreatPart()'>如果您不是上述人员，请创建</a></p>
-  <p id="newPartDiv" name ="newPartDiv"><input  id="newPart" name ="newPart" value="" /></p>
+  <p><a href='#' onclick='$("#newPartDiv").show();'>如果您不是上述人员，请创建</a></p>
+  <div id="newPartDiv" name ="newPartDiv" >
+  	<input  id="newPart" name ="newPart" value="" />
+    <button class="btn btn-primary" onclick="submit();">确定</button>
+    <p id="hint2" name ="hint2">请输入用户名</p>
+  </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
-    <button class="btn btn-primary" onclick="submit();">确定</button>
   </div>
 </div>
 
