@@ -9,11 +9,15 @@ var event_password="";
 		        });
 		 });
 		 
-		 function submit(){
-		 	if($('#newPart').val()==''){
-		 		$('#hint2').show();
-		 		return false;
+		 function submit(eventId,partName){
+		 	if(eventId==null){
+			 	if($('#newPart').val()==''){
+			 		$('#hint2').show();
+			 		return false;
+			 	}
 		 	}
+		 	$('#eventId').val(eventId);
+		 	$('#participantName').val(partName);
 		 	$('#newPartName').val($('#newPart').val());
 		 	document.thisForm.submit();
 		 }
