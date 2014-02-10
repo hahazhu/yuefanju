@@ -10,15 +10,17 @@ var event_password="";
 		 });
 		 
 		 function submit(eventId,partName){
+			//新建用户
 		 	if(eventId==null){
 			 	if($('#newPart').val()==''){
 			 		$('#hint2').show();
 			 		return false;
 			 	}
+			 	$('#newPartName').val($('#newPart').val());
+		 	}else{  //不新建用户，点击链接进入
+			 	$('#eventId').val(eventId);
+			 	$('#participantName').val(partName);
 		 	}
-		 	$('#eventId').val(eventId);
-		 	$('#participantName').val(partName);
-		 	$('#newPartName').val($('#newPart').val());
 		 	document.thisForm.submit();
 		 }
 		 
